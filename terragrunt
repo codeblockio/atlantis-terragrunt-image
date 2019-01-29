@@ -5,7 +5,7 @@ if [ -n "$SSH_PRIVATE_KEY" ]; then
   eval "$(ssh-agent -s)" && \
   chmod 600 priv_key && \
   ssh-add priv_key
-
+  ssh -T -oStrictHostKeyChecking=accept-new git@github.com || true
   rm -f priv_key
 fi
 
